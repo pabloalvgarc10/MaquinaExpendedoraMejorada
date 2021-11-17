@@ -72,7 +72,7 @@ public class MaquinaExpendedoraMejorada {
         }
         else{
             System.out.println("Necesitas introducir " + (cantidadDeDineroQueFalta) + " euros mas!");
-        }            
+        }   
     }
 
     /**
@@ -88,11 +88,25 @@ public class MaquinaExpendedoraMejorada {
     } 
 
     
-        public int vaciarDineroDeLaMaquina() {   
-        int vaciarDinero;
-        vaciarDinero=totalDineroAcumulado + balanceClienteActual;
+    public int vaciarDineroDeLaMaquina() {   
+            int vaciarDinero;
+            vaciarDinero=totalDineroAcumulado + balanceClienteActual;
+            balanceClienteActual = 0;
+            totalDineroAcumulado = 0;
+            int vaciarDineroDeLaMaquina = totalDineroAcumulado;
+            
+            
+            if (balanceClienteActual == 0){
+               totalDineroAcumulado = 0;
+                  
+            }
+        
+            else {
+                System.out.println("No se puede vaciar la maquina");
+                vaciarDinero = -1;
+        }
+
         return vaciarDinero;
     }
-}
 
-    
+}    
