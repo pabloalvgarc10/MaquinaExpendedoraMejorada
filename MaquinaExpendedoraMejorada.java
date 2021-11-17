@@ -91,8 +91,6 @@ public class MaquinaExpendedoraMejorada {
     public int vaciarDineroDeLaMaquina() {   
             int vaciarDinero;
             vaciarDinero = totalDineroAcumulado + balanceClienteActual;   
-            totalDineroAcumulado = 0;
-            balanceClienteActual = 0;
             
             
            
@@ -103,8 +101,8 @@ public class MaquinaExpendedoraMejorada {
             }
         
             else {
-               totalDineroAcumulado = 0;
-               balanceClienteActual = 0;   
+                balanceClienteActual = 0;
+                totalDineroAcumulado = 0;
         }
 
         return vaciarDinero;
