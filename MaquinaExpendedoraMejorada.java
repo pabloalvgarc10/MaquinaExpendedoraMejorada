@@ -16,6 +16,8 @@ public class MaquinaExpendedoraMejorada {
     private boolean maquinaPremio;
 
     private int maximoBilletes;
+    
+    private int descuentoBillete;
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
@@ -30,6 +32,7 @@ public class MaquinaExpendedoraMejorada {
         billetesVendidos = 0;
         maquinaPremio = premio;
         maximoBilletes = numeromaximoBilletes;
+        descuentoBillete = 0;
     }
 
     /**
@@ -50,7 +53,7 @@ public class MaquinaExpendedoraMejorada {
      * Simula la introduccion de dinero por parte del cliente actual
      */
     public void introducirDinero(int cantidadIntroducida) {
-        if (billetesVendidos <= maximoBilletes){
+        if (billetesVendidos < maximoBilletes){
             if (cantidadIntroducida > 0) {
                 balanceClienteActual = balanceClienteActual + cantidadIntroducida;
             }
@@ -70,6 +73,9 @@ public class MaquinaExpendedoraMejorada {
         int cantidadDeDineroQueFalta=precioBillete - balanceClienteActual;
         if (billetesVendidos < maximoBilletes){
             if (cantidadDeDineroQueFalta <= 0) {    
+                
+                
+                
                 // Simula la impresion de un billete
                 System.out.println("##################");
                 System.out.println("# Billete de tren:");
@@ -83,9 +89,12 @@ public class MaquinaExpendedoraMejorada {
                 // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
                 balanceClienteActual = balanceClienteActual - precioBillete;
                 billetesVendidos +=1;
-
+                descuentoBillete +=1;
+                
                 if (maquinaPremio == true){
+                    if (descuentoBillete == 3){                  
                     System.out.println("descuento de"+precioBillete*0.1+"precio en €");
+                    descuentoBillete = descuentoBillete - 3;
                 } 
 
             }
@@ -98,7 +107,7 @@ public class MaquinaExpendedoraMejorada {
             }
         }
     
-        
+    }
     
         /**
          * Cla la operacion de compra del cliente actual y le
